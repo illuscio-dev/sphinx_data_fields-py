@@ -3,8 +3,11 @@
 Sphinx Extension for Automatically Documenting Dataclass fields through sphinx-autodoc
 
 ## Getting Started
-For development guide, 
-[read the docs](https://illuscio-islelib-py.readthedocs-hosted.com/en/latest/)
+For full documentation:
+[read the docs](https://du1ry3q3c386j.cloudfront.net/sphinx_data_fields-py/latest/index.html)
+
+For library development guide, 
+[read the docs](https://du1ry3q3c386j.cloudfront.net/islelib-py/latest/index.html)
 
 ### Prerequisites
 

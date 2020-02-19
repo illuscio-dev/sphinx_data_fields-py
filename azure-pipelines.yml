@@ -1,134 +1,33 @@
-# Python package
-# Create and test a Python package on multiple Python versions.
-# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/python
-
 name: build_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: illuscio-dev/azure-pipelines-templates
+      endpoint: Github_Read
 
 trigger:
   batch: true
+  # We are going to only be doing builds for the 'dev' branch. Master will be updated
+  # from dev on successful builds rather than being updated directly.
   branches:
     include:
-      - master
-      - pre_release
+      - dev
     exclude:
       - build_*
+      - v*
+      - master
 
 pr:
-  - master
-  - pre_release
+  - dev
+
+variables:
+  # Link to the variables template.
+  - template: variables.yml@templates
 
 jobs:
-
-- job: 'Check_Version'
-  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-
-  pool:
-    vmImage: 'ubuntu-16.04'
-
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.7'
-      architecture: 'x64'
-
-  - template: zdevelop/azure_templates/setup_pip.yml
-
-  - script: pip install --no-cache-dir -e .[build]
-    displayName: 'Install dependencies'
-
-  - task: PythonScript@0
-    displayName: 'check for version conflict'
-    inputs:
-      scriptSource: filePath
-      scriptPath: 'zdevelop/azure_scripts/check_version.py'
-      failOnStderr: true
-
-- job: 'Lint'
-  dependsOn: 'Check_Version'
-  condition: or(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
-
-  pool:
-    vmImage: 'ubuntu-16.04'
-  strategy:
-    matrix:
-      Python36:
-        python.version: '3.6'
-      Python37:
-        python.version: '3.7'
-    maxParallel: 4
-
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '$(python.version)'
-      architecture: 'x64'
-
-  - template: zdevelop/azure_templates/setup_pip.yml
-
-  - script: pip install --no-cache-dir -e .[lint]
-    displayName: 'Install dependencies'
-
-  - script: |
-      flake8
-    displayName: 'lint (flake8)'
-
-  - script: |
-      black . --check
-    displayName: 'lint (black)'
-
-  - script: |
-      mypy .
-    displayName: 'type checking (mypy)'
-
-- template: zdevelop/azure_templates/run_tests.yml
-  parameters:
-    name: 'Test_Win'
-    vmImage: 'vs2017-win2016'
-    dependsOn: 'Lint'
-    pipSettingsScript: setup_pip_win.yml
-
-- template: zdevelop/azure_templates/run_tests.yml
-  parameters:
-    name: 'Test_Linux'
-    vmImage: 'ubuntu-16.04'
-    dependsOn: 'Test_Win'
-    pipSettingsScript: setup_pip.yml
-
-- template: zdevelop/azure_templates/run_tests.yml
-  parameters:
-    name: 'Test_Mac'
-    vmImage: 'macOS-10.13'
-    dependsOn: 'Test_Linux'
-    pipSettingsScript: setup_pip.yml
-
-- job: 'Publish'
-  dependsOn: 'Test_Mac'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-
-  pool:
-    vmImage: 'Ubuntu 16.04'
-
-  steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.x'
-      architecture: 'x64'
-
-  - template: zdevelop/azure_templates/setup_pip.yml
-
-  - script: pip install --no-cache-dir -e .[build]
-    displayName: 'Install dependencies'
-
-  - task: PythonScript@0
-    displayName: 'check for version conflict'
-    inputs:
-      scriptSource: filePath
-      scriptPath: 'zdevelop/azure_scripts/check_version.py'
-      failOnStderr: true
-
-  - script: python3 setup.py sdist bdist_wheel
-    displayName: 'Build package'
-
-  - script: twine upload -r isle_pypi_libs dist/*
-    displayName: 'Upload package'
+  # Link to the pipeline template.
+  - template: python_package_main.yml@templates
+    parameters:
+      pypiAzureArtifactFeed: astral-pypi

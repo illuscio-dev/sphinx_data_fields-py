@@ -3,6 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
+.. automodule:: sphinx_data_fields
+
 Sphinx Data Fields
 ==================
 
@@ -11,3 +13,8 @@ Sphinx Data Fields
    :caption: Contents:
 
 Sphinx Extension for Automatically Documenting Dataclass fields through sphinx-autodoc
+
+Example Output:
+
+.. autoclass:: ExampleDataclass
+   :members:

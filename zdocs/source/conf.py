@@ -1,4 +1,13 @@
-from sphinx_data_fields import __version__
+import configparser
+import pathlib
+
+config_path = pathlib.Path(__file__).parent.parent.parent / "setup.cfg"
+config = configparser.ConfigParser()
+config.read(str(config_path))
+
+__version__ = config.get("version", "release")
+if not __version__:
+    __version__ = config.get("version", "target")
 
 # -*- coding: utf-8 -*-
 #
@@ -44,6 +53,7 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx_autodoc_typehints",
+    "sphinx_data_fields",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
