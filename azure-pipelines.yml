@@ -30,4 +30,4 @@ jobs:
   # Link to the pipeline template.
   - template: python_package_main.yml@templates
     parameters:
-      pypiAzureArtifactFeed: astral-pypi
+      publishToPypiOrg: true
