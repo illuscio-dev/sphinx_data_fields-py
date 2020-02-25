@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="fv-az105" name="pytest" skipped="0" tests="12" time="0.464" timestamp="2020-02-25T18:33:40.597106"><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key1-None-None-True-False]" time="0.002"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+KEY: key1
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key2-default-None-True-False]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+* **default:** ``default``
+
+KEY: key2
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key3-10-None-True-False]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+* **default:** ``10``
+
+KEY: key3
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key4-None-list-True-False]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+* **default factory:** ``builtins.list``
+
+KEY: key4
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key5-None-None-False-False]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+* **field-only**
+
+KEY: key5
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key6-None-None-True-True]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+KEY: key6
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="15" name="test_docstring_process[key7-10-None-True-True]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+Key Description
+
+KEY: key7
+TYPE STRING RECEIVED: Key Description
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="56" name="test_non_fields[not_a_field1-attribute]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+what a description!
+
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="56" name="test_non_fields[not_a_field2-attribute]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+what a description!
+
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="56" name="test_non_fields[method-method]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+what a description!
+
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="56" name="test_non_fields[not_a_anything-attribute]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+what a description!
+
+</system-out></testcase><testcase classname="zdevelop.tests.test_example" file="zdevelop/tests/test_example.py" line="56" name="test_non_fields[Y.not_a_anything-attribute]" time="0.001"><system-out>{&apos;module.X&apos;: &lt;class &apos;sphinx_data_fields._example_object.ExampleDataclass&apos;&gt;}
+
+what a description!
+
+</system-out></testcase></testsuite></testsuites>
